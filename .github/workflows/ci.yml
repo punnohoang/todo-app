@@ -38,3 +38,7 @@ jobs:
       # Bước 6: Build Docker image
       - name: Build Docker image
         run: docker build -t todo-app .
+
+      # Bước 7: Notify success
+      - name: Notify success
+        run: echo "✅ Build và test thành công - Railway đang deploy..."
