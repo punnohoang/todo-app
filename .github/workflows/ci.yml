@@ -1,0 +1,36 @@
+name: CI Pipeline
+
+# Khi nào chạy
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    # Chạy trên máy ảo Ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+      # Bước 1: Lấy code từ repo
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Bước 2: Cài Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # Bước 3: Cài dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Bước 4: Build NestJS
+      - name: Build app
+        run: npm run build
+
+      # Bước 5: Build Docker image
+      - name: Build Docker image
+        run: docker build -t todo-app .
