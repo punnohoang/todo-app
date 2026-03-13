@@ -27,10 +27,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Bước 4: Build NestJS
+      # Bước 4: Chạy test
+      - name: Run tests
+        run: npm run test
+
+      # Bước 5: Build NestJS
       - name: Build app
         run: npm run build
 
-      # Bước 5: Build Docker image
+      # Bước 6: Build Docker image
       - name: Build Docker image
         run: docker build -t todo-app .
