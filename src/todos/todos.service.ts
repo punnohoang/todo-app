@@ -15,7 +15,7 @@ export class TodosService {
   create(title: string) {
     const todo = {
       id: this.idCounter++,
-      title: "SAI",
+      title,
       done: false,
     };
     this.todos.push(todo);
